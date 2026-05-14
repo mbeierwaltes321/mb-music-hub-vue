@@ -1,5 +1,6 @@
 //CSS
 import './assets/main.css'
+import 'unfonts.css'
 
 //Vue/Vue router
 import { createApp } from 'vue'
