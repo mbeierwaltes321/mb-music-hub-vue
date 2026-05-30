@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, useRouter } from 'vue-router';
+import { VBtn, VImg, VContainer, VRow, VCol } from 'vuetify/components';
+import SpotifyLogo from "@/assets/Spotify_Logo_RGB_White.png";
 
 const router = useRouter();
 
@@ -17,30 +19,47 @@ function navigateToMainLayout() {
 
 <template>
     <div id="AppIntro">
-        <div id="IntroContainer" class="container-md text-center">
-            <div class="row">
-                <div class="col">
-                    <h1 class="text-light mt-5">Hi! 👋</h1>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-10">
-                    <p id="Welcome" class="fs-2 text-light mt-3">Welcome to MB's Music Hub!</p>
-                </div>
-            </div>
-            <div id="PoweredBy" class="row justify-content-center">
-                <p class="col-md-auto fs-4 text-light mt-3">Powered By:</p>
-                <img id="spotify-logo" class="col-7 ms-1" src="./../assets/Spotify_Logo_RGB_White.png">
-            </div>
-            <!-- <div class="row justify-content-center">
-                <a href="#" class="col-md-auto fs-2 text-primary mt-3">Who am I?</a>
-            </div> -->
-            <div class="row justify-content-center">
-                <button type="button"
-                        class="col-4 fs-5 btn btn-primary mt-4"
-                        @click="navigateToMainLayout"> Let's Go! </button>
-            </div>
-        </div>
+        <v-container>
+            <v-row justify="center">
+                <v-col cols="auto">
+                    <!--TODO - Make font better-->
+                    <div class="fade-first text-h3 text-white">Hi! 👋</div>
+                </v-col>
+            </v-row>
+        </v-container>
+        <v-container>
+            <v-row justify="center">
+                <v-col cols="auto">
+                    <div class="fade-second text-h4 text-center text-white">Welcome to MB's Music Hub!</div>
+                </v-col>
+            </v-row>
+        </v-container>
+        <v-container>
+            <v-row justify="center" align="center">
+                <v-col cols="auto">
+                    <div class="fade-third text-h5 text-white">Powered By:</div>
+                </v-col>
+                <v-col cols="auto">
+                    <v-img class="fade-third"
+                        width="13.36em"
+                        height="4em"
+                        :src="SpotifyLogo" 
+                    />
+                </v-col>
+            </v-row>
+        </v-container>
+        <v-container>
+            <v-row justify="center" align="center">
+                <v-col cols="auto">
+                    <v-btn class="fade-fourth"
+                        size="x-large"
+                        @click="navigateToMainLayout"
+                        color="blue-darken-1">
+                        Let's go!
+                    </v-btn>
+                </v-col>
+            </v-row>
+        </v-container>
     </div>
 </template>
 
@@ -51,30 +70,21 @@ function navigateToMainLayout() {
   100% { opacity: 1; }
 }
 
-h1 {
+.fade-first {
     animation: fadeIn 1s;
 }
 
-#Welcome {
+.fade-second {
     animation: fadeIn 1.5s;
     font-family: 'Abyssinica SIL';
 }
 
-#PoweredBy {
+.fade-third {
     animation: fadeIn 2s;
 }
 
-a {
-    animation: fadeIn 2.5s;
-}
-
-button {
+.fade-fourth {
     animation: fadeIn 3.5s;
-}
-
-#spotify-logo {
-    width: 13.36em;
-    height: 4em;
 }
 
 #AppIntro {
