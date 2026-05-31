@@ -42,8 +42,11 @@ const footerLinks: FooterLinkData[] = [
 
 <template>
     <v-footer :absolute="true" 
-              :app="true">    
-        <div id="FooterContainer" class="container-fluid vh-25">
+              :app="true"
+              border
+              color="rgb(75, 0, 0)"
+    >    
+        <div class="container-fluid vh-25">
             <div id="Links" class="d-flex align-items-center h-25 mt-2">
                 <div v-for="imgProp in imgProperties"> 
                     <a :href="imgProp.link">
@@ -75,10 +78,5 @@ const footerLinks: FooterLinkData[] = [
 </template>
 
 <style scoped>
-
-#FooterContainer {
-    background-color: rgb(75, 0, 0);
-    height: auto;
-}
 
 </style>
