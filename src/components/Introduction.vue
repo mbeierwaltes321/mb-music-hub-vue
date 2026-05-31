@@ -18,7 +18,7 @@ function navigateToMainLayout() {
 </script>
 
 <template>
-    <div id="AppIntro">
+    <div class="app-intro">
         <v-container>
             <v-row justify="center">
                 <v-col cols="auto">
@@ -26,15 +26,11 @@ function navigateToMainLayout() {
                     <div class="fade-first text-h3 text-white">Hi! 👋</div>
                 </v-col>
             </v-row>
-        </v-container>
-        <v-container>
             <v-row justify="center">
                 <v-col cols="auto">
                     <div class="fade-second text-h4 text-center text-white">Welcome to MB's Music Hub!</div>
                 </v-col>
             </v-row>
-        </v-container>
-        <v-container>
             <v-row justify="center" align="center">
                 <v-col cols="auto">
                     <div class="fade-third text-h5 text-white">Powered By:</div>
@@ -47,8 +43,6 @@ function navigateToMainLayout() {
                     />
                 </v-col>
             </v-row>
-        </v-container>
-        <v-container>
             <v-row justify="center" align="center">
                 <v-col cols="auto">
                     <v-btn class="fade-fourth"
@@ -87,7 +81,7 @@ function navigateToMainLayout() {
     animation: fadeIn 3.5s;
 }
 
-#AppIntro {
+.app-intro {
     background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(111,0,0,1) 50%);
     height: 100vh;
 }

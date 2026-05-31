@@ -20,8 +20,4 @@ const router = useRouter();
 
 <style scoped>
 
-.v-footer {
-    padding: 0%;
-}
-
 </style>
