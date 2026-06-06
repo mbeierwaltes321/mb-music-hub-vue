@@ -43,8 +43,7 @@ watch(() => theme.global.current.value.dark, () => {
     <v-container id="HomeContainer"
                  :fluid="true"
                  class="p-0 fill-height">
-        <v-row class="fill-height"
-               no-gutters>
+        <v-row no-gutters>
             <v-col id="HomeHeaderSection"
                    :cols="12"
                    class="d-flex flex-column align-items-center">

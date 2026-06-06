@@ -66,8 +66,10 @@ watch(() => mdAndUp.value, () => {
 <template>
     <v-app-bar>
         <v-app-bar-nav-icon v-if="!mdAndUp" 
-                            @click.stop="drawer = !drawer" />
-        <v-app-bar-title>MB's Music Hub</v-app-bar-title>
+            @click.stop="drawer = !drawer" />
+        <v-app-bar-title>
+            MB's Music Hub
+        </v-app-bar-title>
         <v-menu v-if="mdAndUp">
             <template #activator="{ props }">
                 <v-btn v-bind="props" 
