@@ -90,6 +90,18 @@ watch(() => theme.global.current.value.dark, () => {
                 </v-hover>
             </v-col>
         </v-row>
+        <v-row justify="center">
+            <v-col cols="auto">
+                <h2>Podcasts</h2>
+            </v-col>
+        </v-row>
+        <v-divider class="mb-8"
+            :color="horizontalLineColor"
+            :thickness="3" 
+        />
+        <v-row>
+            <!--TODO: Maybe we can create the original idea of the podcasts scrolling using the transition classes-->
+        </v-row>
     </v-container>
 </template>
 
