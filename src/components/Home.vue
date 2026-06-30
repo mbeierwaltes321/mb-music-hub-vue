@@ -50,6 +50,16 @@ watch(() => theme.global.current.value.dark, () => {
             </v-col>
         </v-row>
         <v-row justify="center">
+            <v-col :cols="10"
+                :md="7">
+                <p class="text-subtitle-2 text-center text-md-left">
+                    MB's Music Hub contains my favorite music mixes/playlists and podcasts that I listen
+                    to throughout the day. Playlists and podcasts are pulled from Spotify, and music mixes
+                    are come from YouTube. Please select a category within one of the sections below.
+                </p>
+            </v-col>
+        </v-row>
+        <v-row justify="center">
             <v-col cols="auto">
                 <h2>Music</h2>
             </v-col>
@@ -58,6 +68,13 @@ watch(() => theme.global.current.value.dark, () => {
             :color="horizontalLineColor"
             :thickness="3" 
         />
+        <v-row justify="center">
+            <v-col cols="auto">
+                <p class="text-subtitle-2 text-center text-md-left">
+                    Look at my favorite music mixes from YouTube, or browse my Spotify Playlists to see what you like!
+                </p>
+            </v-col>
+        </v-row>
         <v-row justify="space-around">
             <v-col cols="auto">
                 <v-hover>
@@ -99,8 +116,12 @@ watch(() => theme.global.current.value.dark, () => {
             :color="horizontalLineColor"
             :thickness="3" 
         />
-        <v-row>
-            <!--TODO: Maybe we can create the original idea of the podcasts scrolling using the transition classes-->
+        <v-row justify="center">
+            <v-col cols="auto">
+                <p class="text-subtitle-2 text-center text-md-left">
+                    Take a listen to some of my favorite (and sometimes specific) podcasts from Spotify.
+                </p>
+            </v-col>
         </v-row>
     </v-container>
 </template>
