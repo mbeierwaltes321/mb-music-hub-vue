@@ -55,7 +55,7 @@ watch(() => theme.global.current.value.dark, () => {
                 <p class="text-subtitle-2 text-center text-md-left">
                     MB's Music Hub contains my favorite music mixes/playlists and podcasts that I listen
                     to throughout the day. Playlists and podcasts are pulled from Spotify, and music mixes
-                    are come from YouTube. Please select a category within one of the sections below.
+                    come from YouTube. Please select a category within one of the sections below.
                 </p>
             </v-col>
         </v-row>
@@ -71,7 +71,7 @@ watch(() => theme.global.current.value.dark, () => {
         <v-row justify="center">
             <v-col cols="auto">
                 <p class="text-subtitle-2 text-center text-md-left">
-                    Look at my favorite music mixes from YouTube, or browse my Spotify Playlists to see what you like!
+                    Look at my favorite music mixes from YouTube, or browse my Spotify playlists to see what you like!
                 </p>
             </v-col>
         </v-row>
