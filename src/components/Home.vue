@@ -54,8 +54,7 @@ watch(() => theme.global.current.value.dark, () => {
                 :md="7">
                 <p class="text-subtitle-2 text-center text-md-left">
                     MB's Music Hub contains my favorite music mixes/playlists and podcasts that I listen
-                    to throughout the day. Playlists and podcasts are pulled from Spotify, and music mixes
-                    come from YouTube. Please select a category within one of the sections below.
+                    to throughout the day. Please select a category within one of the sections below.
                 </p>
             </v-col>
         </v-row>
@@ -121,6 +120,23 @@ watch(() => theme.global.current.value.dark, () => {
                 <p class="text-subtitle-2 text-center text-md-left">
                     Take a listen to some of my favorite (and sometimes specific) podcasts from Spotify.
                 </p>
+            </v-col>
+        </v-row>
+        <v-row justify="center">
+            <v-col cols="auto">
+                <v-hover>
+                    <template #default="{isHovering, props}">
+                        <v-card title="Spotify Podcasts"
+                                v-bind="props"
+                                :color="isHovering ? 'light-blue-darken-1' : undefined"
+                                @click="navigateToPodcasts"
+                                :max-width="225">
+                            <v-card-text>
+                                Browse the different playlists that I have created!
+                            </v-card-text>
+                        </v-card>
+                    </template>
+                </v-hover>
             </v-col>
         </v-row>
     </v-container>
