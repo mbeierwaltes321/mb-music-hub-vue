@@ -52,9 +52,9 @@ watch(() => theme.global.current.value.dark, () => {
         <v-row justify="center">
             <v-col :cols="10"
                 :md="7">
-                <p class="text-subtitle-2 text-center text-md-left">
+                <p class="text-subtitle-2 text-center">
                     MB's Music Hub contains my favorite music mixes/playlists and podcasts that I listen
-                    to throughout the day. Please select a category within one of the sections below.
+                    to throughout the day.<br>Please select a category within one of the sections below.
                 </p>
             </v-col>
         </v-row>
@@ -69,7 +69,7 @@ watch(() => theme.global.current.value.dark, () => {
         />
         <v-row justify="center">
             <v-col cols="auto">
-                <p class="text-subtitle-2 text-center text-md-left">
+                <p class="text-subtitle-2 text-center">
                     Look at my favorite music mixes from YouTube, or browse my Spotify playlists to see what you like!
                 </p>
             </v-col>
@@ -117,12 +117,12 @@ watch(() => theme.global.current.value.dark, () => {
         />
         <v-row justify="center">
             <v-col cols="auto">
-                <p class="text-subtitle-2 text-center text-md-left">
+                <p class="text-subtitle-2 text-center">
                     Take a listen to some of my favorite (and sometimes specific) podcasts from Spotify.
                 </p>
             </v-col>
         </v-row>
-        <v-row justify="center">
+        <v-row justify="center" class="mb-2">
             <v-col cols="auto">
                 <v-hover>
                     <template #default="{isHovering, props}">
@@ -141,7 +141,3 @@ watch(() => theme.global.current.value.dark, () => {
         </v-row>
     </v-container>
 </template>
-
-<style scoped>
-
-</style>
