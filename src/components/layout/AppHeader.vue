@@ -52,7 +52,9 @@ function toggleTheme() {
  * This function handles the user clicking on the login button for Spotify
  */
 function onClickSpotifyButton() {
-    alert("You clicked on the spotify log in button!");
+    //TODO - Eventually update this to pull the correct URL depending on the environment
+    const loginUrl = "http://localhost:8080/api/conn/spotifylogin";
+    window.location.href = loginUrl;
 }
 
 
