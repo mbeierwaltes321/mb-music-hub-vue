@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import { usePlaylistService } from '@/services/hubserver/playlistService';
 import { ref, watch } from 'vue';
 import { useTheme } from 'vuetify';
-import { VContainer, VCol, VRow, VCard, VCardText, VHover, VCarousel, VCarouselItem, VSheet, VDivider } from 'vuetify/components';
+import { VContainer, VCol, VRow, VCard, VCardText, VHover, VBtn, VDivider } from 'vuetify/components';
 
 //Set the horizontal line depending on the color theme
 const theme = useTheme();
 const horizontalLineColor = ref(theme.global.current.value.dark ? "#8B8B00" : "#00008B");
+const { getUserPlaylists } = usePlaylistService();
 
 /**
  * This function navigates the user to the youtube mixes component
@@ -56,6 +58,15 @@ watch(() => theme.global.current.value.dark, () => {
                     MB's Music Hub contains my favorite music mixes/playlists and podcasts that I listen
                     to throughout the day.<br>Please select a category within one of the sections below.
                 </p>
+            </v-col>
+        </v-row>
+        <v-row justify="center">
+            <v-col cols="auto">
+                <v-btn color="red-darken-4"
+                    @click="getUserPlaylists"
+                >
+                    Test endpoint
+                </v-btn>
             </v-col>
         </v-row>
         <v-row justify="center">

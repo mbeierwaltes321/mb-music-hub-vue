@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@fontsource/roboto": "^5.2.10",
+    "axios": "^1.18.1",
     "vite-plugin-vuetify": "^2.0.3",
     "vue": "^3.4.21",
     "vue-router": "^4.4.0",
