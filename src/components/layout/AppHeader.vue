@@ -53,7 +53,7 @@ function toggleTheme() {
  */
 function onClickSpotifyButton() {
     //TODO - Eventually update this to pull the correct URL depending on the environment
-    const loginUrl = "http://localhost:8080/api/conn/spotifylogin";
+    const loginUrl = "http://127.0.0.1:8080/api/conn/spotifylogin";
     window.location.href = loginUrl;
 }
 
