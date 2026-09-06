@@ -1,5 +1,5 @@
 import { HttpStatusCode, type AxiosRequestConfig, type AxiosResponse } from "axios";
-import { axiosInstance } from "./axiosConfig";
+import axiosInstance from "./axiosConfig";
 
 
 export function usePlaylistService() {
