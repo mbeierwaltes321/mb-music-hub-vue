@@ -15,11 +15,14 @@ import App from './App.vue'
 
 //Config/storage settings
 import setUpLocalStorage from './utilities/localStorage';
+import { createPinia } from 'pinia';
 
 //Set up the local storage defaults
+const pinia = createPinia();
 setUpLocalStorage();
 
 createApp(App)
 .use(router)
 .use(vuetify)
+.use(pinia)
 .mount('#app')
