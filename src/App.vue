@@ -7,8 +7,6 @@ import GlobalDialog from './components/dialog/GlobalDialog.vue';
 
 const router = useRouter();
 
-const isDialogActive = ref<boolean>(false);
-
 onBeforeMount(() => {
     //Default the user to the intro page if it's their first time visitng
     if (localStorage.getItem("firstVisit") === "true") {
