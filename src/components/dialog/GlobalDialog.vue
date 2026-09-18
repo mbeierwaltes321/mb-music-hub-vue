@@ -27,7 +27,6 @@ function closeDialog(dialog: DialogConfig) {
     }
 
     activeDialogs.value.splice(dialogIndex, 1);
-    activeDialogs.value.pop();
 }
 
 </script>
