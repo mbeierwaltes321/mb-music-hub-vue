@@ -3,8 +3,10 @@ import { VAppBar, VMenu, VAppBarTitle, VBtn, VAppBarNavIcon, VList, VListItem } 
 import { computed, type Ref, ref, watch } from "vue";
 import { useDisplay, useTheme } from "vuetify";
 import { setThemeInLocalStorage } from "@/utilities/localStorage";
+import { useRouter } from "vue-router";
 
 const theme = useTheme();
+const router = useRouter();
 
 //Determine if the current screen is in the medium breakpoint or higher (960px or greater)
 const { mdAndUp } = useDisplay();
@@ -53,8 +55,9 @@ function toggleTheme() {
  */
 function onClickSpotifyButton() {
     //TODO - Eventually update this to pull the correct URL depending on the environment
-    const loginUrl = "http://127.0.0.1:8080/api/conn/spotifylogin";
-    window.location.href = loginUrl;
+    const loginUrl = import.meta.env.DEV ? "http://127.0.0.1:8080/api/conn/spotifylogin" : "prod_url";
+    const frontEndQuery = `?frontendState=${encodeURIComponent(router.currentRoute.value.fullPath)}`;
+    window.location.href = loginUrl + frontEndQuery;
 }
 
 

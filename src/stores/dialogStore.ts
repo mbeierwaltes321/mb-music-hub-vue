@@ -16,6 +16,11 @@ export interface DialogConfig {
 export const useDialogStore = defineStore("dialogs", () => {
     const activeDialogs: Ref<DialogConfig[]> = ref([]);
 
+    /**
+     * Displays an alert to the user
+     * @param titleMessage What's displayed in the title of the dialog
+     * @param message What's displayed in the message of the dialog
+     */
     async function alertDialog(titleMessage: string, message: string) {
         const alertPromise = new Promise((resolve) => {
             const alertDialog: DialogConfig = {
@@ -32,6 +37,12 @@ export const useDialogStore = defineStore("dialogs", () => {
         await alertPromise;
     }
 
+    /**
+     * Displays a confirmation dialog to get a response from the user
+     * @param titleMessage What's displayed in the title of the dialog
+     * @param message What's displayed in the message of the dialog
+     * @returns True if the user says yes. False otherwise.
+     */
     async function confirmDialog(titleMessage: string, message: string) {
         const confirmPromise = new Promise<boolean>((resolve) => {
             const confirmDialog: DialogConfig = {

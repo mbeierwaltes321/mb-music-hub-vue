@@ -2,29 +2,22 @@
 import { usePlaylistService } from '@/services/hubserver/playlistService';
 import { useDialogStore } from '@/stores/dialogStore';
 import { ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
 import { useTheme } from 'vuetify';
 import { VContainer, VCol, VRow, VCard, VCardText, VHover, VBtn, VDivider } from 'vuetify/components';
 
 //Set the horizontal line depending on the color theme
 const {confirmDialog, alertDialog} = useDialogStore();
+const router = useRouter();
 const theme = useTheme();
 const horizontalLineColor = ref(theme.global.current.value.dark ? "#8B8B00" : "#00008B");
-const { getUserPlaylists } = usePlaylistService();
 
 /**
  * This function navigates the user to the youtube mixes component
  */
 function navigateToYoutubeMixes() {
+    console.log(router.currentRoute.value.fullPath);
     alert("You clicked on the youtube mixes button!");
-}
-
-async function testConfirm() {
-    const response = await confirmDialog("Yay!", "You did it... right?");
-    console.log(response);
-}
-
-async function testAlert() {
-    await alertDialog("Test", "This is an alert");
 }
 
 /**
@@ -69,22 +62,6 @@ watch(() => theme.global.current.value.dark, () => {
                     MB's Music Hub contains my favorite music mixes/playlists and podcasts that I listen
                     to throughout the day.<br>Please select a category within one of the sections below.
                 </p>
-            </v-col>
-        </v-row>
-        <v-row justify="center">
-            <v-col cols="auto">
-                <v-btn color="red-darken-4"
-                    @click="testConfirm"
-                >
-                    Test confirm
-                </v-btn>
-            </v-col>
-            <v-col cols="auto">
-                <v-btn color="red-darken-4"
-                    @click="testAlert"
-                >
-                    Test alert
-                </v-btn>
             </v-col>
         </v-row>
         <v-row justify="center">
