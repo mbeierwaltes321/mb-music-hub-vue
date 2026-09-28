@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { onBeforeMount, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { VDialog } from 'vuetify/components';
-import { VCard } from 'vuetify/components';
 import GlobalDialog from './components/dialog/GlobalDialog.vue';
 
 const router = useRouter();
