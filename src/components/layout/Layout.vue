@@ -3,6 +3,7 @@ import { VApp, VAppBar, VMain, VFooter } from 'vuetify/components';
 import AppFooter from './AppFooter.vue';
 import AppHeader from './AppHeader.vue';
 import { RouterView, useRouter } from 'vue-router';
+import PageLoad from '../common/PageLoad.vue';
 
 const router = useRouter();
 
@@ -16,6 +17,7 @@ const router = useRouter();
         </v-main>
         <AppFooter/>    
     </v-app>
+    <!-- <PageLoad /> -->
 </template>
 
 <style scoped>
