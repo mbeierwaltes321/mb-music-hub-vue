@@ -4,8 +4,10 @@ import AppFooter from './AppFooter.vue';
 import AppHeader from './AppHeader.vue';
 import { RouterView, useRouter } from 'vue-router';
 import PageLoad from '../common/PageLoad.vue';
+import { useAppStateStore } from '@/stores/appStateStore.ts';
 
 const router = useRouter();
+const appState = useAppStateStore();
 
 </script>
 
@@ -17,7 +19,7 @@ const router = useRouter();
         </v-main>
         <AppFooter/>    
     </v-app>
-    <!-- <PageLoad /> -->
+    <PageLoad v-model:is-active="appState.isLoading"/>
 </template>
 
 <style scoped>
