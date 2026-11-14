@@ -1,6 +1,5 @@
 import { HttpStatusCode, type AxiosRequestConfig, type AxiosResponse } from "axios";
-import axiosInstance from "./axiosConfig";
-
+import { hubserverGET } from "./hubserverCore";
 
 export function usePlaylistService() {
 
@@ -8,14 +7,8 @@ export function usePlaylistService() {
      * This function will retrieve playlists for the currently logged in user
      */
     async function getUserPlaylists() {
-        const response = await axiosInstance.get("playlists/spotify-playlists");
-
-        if (response.status != HttpStatusCode.Ok) {
-            console.error("Something went wrong");
-            return;
-        }
-
-        console.log(response.data);
+        //TODO - Implement this once the return DTO has been properly set in in the backend server
+        return await hubserverGET("playlists/spotify-playlists");
     }
 
     return { getUserPlaylists };

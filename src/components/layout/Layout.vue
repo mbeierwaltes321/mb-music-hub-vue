@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import { VApp, VAppBar, VMain, VFooter } from 'vuetify/components';
+import { VApp, VMain } from 'vuetify/components';
 import AppFooter from './AppFooter.vue';
 import AppHeader from './AppHeader.vue';
-import { RouterView, useRouter } from 'vue-router';
+import { RouterView } from 'vue-router';
 import PageLoad from '../common/PageLoad.vue';
 import { useAppStateStore } from '@/stores/appStateStore.ts';
+import { storeToRefs } from 'pinia';
 
-const router = useRouter();
-const appState = useAppStateStore();
+const appStateStore = useAppStateStore();
+
+const {isLoading} = storeToRefs(appStateStore);
 
 </script>
 
@@ -19,7 +21,7 @@ const appState = useAppStateStore();
         </v-main>
         <AppFooter/>    
     </v-app>
-    <PageLoad v-model:is-active="appState.isLoading"/>
+    <PageLoad v-model:is-active="isLoading"/>
 </template>
 
 <style scoped>

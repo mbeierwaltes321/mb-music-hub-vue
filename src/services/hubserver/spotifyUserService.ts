@@ -1,14 +1,7 @@
 import { type GetSpotifyUserInfo } from "@/models/DTOs/GetSpotifyUserInfo";
-import axiosInstance from "./axiosConfig"
-import { HttpStatusCode } from "axios";
+import { hubserverGET } from "./hubserverCore";
+import type { HubserverServiceResponse } from "@/models/common/hubserverServiceResponse";
 
-export async function getSpotifyUserInfo(): Promise<GetSpotifyUserInfo | null> {
-    const result = await axiosInstance.get<GetSpotifyUserInfo>("spotify-users/info");
-
-    if (result.status != HttpStatusCode.Ok || !result.data) {
-        console.error("There was an error: " + result.statusText);
-        return null;
-    }
-
-    return result.data;
+export async function getSpotifyUserInfo(): Promise<HubserverServiceResponse<GetSpotifyUserInfo>> {
+    return hubserverGET<GetSpotifyUserInfo>("spotify-users/info");
 }
