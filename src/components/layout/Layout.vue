@@ -6,10 +6,23 @@ import { RouterView } from 'vue-router';
 import PageLoad from '../common/PageLoad.vue';
 import { useAppStateStore } from '@/stores/appStateStore.ts';
 import { storeToRefs } from 'pinia';
+import { onBeforeMount, onMounted } from 'vue';
 
 const appStateStore = useAppStateStore();
 
-const {isLoading} = storeToRefs(appStateStore);
+const {isLoading: appLoading} = storeToRefs(appStateStore);
+const {updateUserLoggedIn, loadUserInfo} = appStateStore;
+
+onBeforeMount(() => appLoading.value = true);
+
+onMounted(async () => {
+    try {
+        await updateUserLoggedIn();
+        await loadUserInfo();
+    } finally {
+        appLoading.value = false;
+    }
+});
 
 </script>
 
@@ -19,9 +32,9 @@ const {isLoading} = storeToRefs(appStateStore);
         <v-main>
             <RouterView></RouterView>
         </v-main>
-        <AppFooter/>    
+        <AppFooter/>
     </v-app>
-    <PageLoad v-model:is-active="isLoading"/>
+    <PageLoad v-model:is-active="appLoading"/>
 </template>
 
 <style scoped>
