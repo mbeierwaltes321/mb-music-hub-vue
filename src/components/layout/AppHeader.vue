@@ -1,12 +1,16 @@
 <script setup lang="ts">
-import { VAppBar, VMenu, VAppBarTitle, VBtn, VAppBarNavIcon, VList, VListItem } from "vuetify/components";
+import { VAppBar, VMenu, VAppBarTitle, VBtn, VAppBarNavIcon, VList, VListItem, VImg} from "vuetify/components";
 import { computed, type Ref, ref, watch } from "vue";
 import { useDisplay, useTheme } from "vuetify";
 import { setThemeInLocalStorage } from "@/utilities/localStorage";
 import { useRouter } from "vue-router";
+import { useAppStateStore } from "@/stores/appStateStore";
+import { storeToRefs } from "pinia";
 
 const theme = useTheme();
 const router = useRouter();
+const appStateStore = useAppStateStore();
+const {isUserLoggedIn, spotifyUserInfo} = storeToRefs(appStateStore);
 
 //Determine if the current screen is in the medium breakpoint or higher (960px or greater)
 const { mdAndUp } = useDisplay();
@@ -94,12 +98,31 @@ watch(() => mdAndUp.value, () => {
         <v-btn v-if="mdAndUp" 
                :icon="theme.current.value.dark ? 'fas fa-moon' : 'far fa-sun'" 
                @click="toggleTheme"/>
-        <v-btn class="text-none"
-               variant="outlined" 
-               rounded="xl" 
-               append-icon="fab fa-spotify" 
-               size="large"
-               @click="onClickSpotifyButton">
+        <v-btn v-if="isUserLoggedIn"
+            class="text-none"
+            variant="outlined" 
+            rounded="xl" 
+            size="large"
+            @click="onClickSpotifyButton">
+            {{ mdAndUp ? 'Account' : null}}
+            <template #append>
+                <v-img class="mx-auto"
+                    :src="spotifyUserInfo?.imageUrl!"
+                    :width="spotifyUserInfo?.imageWidth!"
+                    :height="spotifyUserInfo?.imageHeight!"
+                    :max-height="40"
+                    :max-width="40"
+                    rounded="circle"
+                />
+            </template>
+        </v-btn>
+        <v-btn v-else
+            class="text-none"
+            variant="outlined" 
+            rounded="xl" 
+            append-icon="fab fa-spotify" 
+            size="large"
+            @click="onClickSpotifyButton">
             Login
         </v-btn>
     </v-app-bar>
