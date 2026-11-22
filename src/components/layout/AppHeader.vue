@@ -101,8 +101,10 @@ watch(() => mdAndUp.value, () => {
         <v-btn v-if="isUserLoggedIn"
             rounded="xl"
             size="large"
+            :icon="spotifyUserInfo?.imageUrl ? undefined : 'fas fa-circle-user'"
             @click="onClickSpotifyButton">
-            <template #default>
+            <template v-if="spotifyUserInfo?.imageUrl"
+                #default>
                 <v-img :src="spotifyUserInfo?.imageUrl!"
                     :width="spotifyUserInfo?.imageWidth!"
                     :height="spotifyUserInfo?.imageHeight!"
