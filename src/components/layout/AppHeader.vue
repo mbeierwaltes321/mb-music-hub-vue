@@ -99,15 +99,11 @@ watch(() => mdAndUp.value, () => {
                :icon="theme.current.value.dark ? 'fas fa-moon' : 'far fa-sun'" 
                @click="toggleTheme"/>
         <v-btn v-if="isUserLoggedIn"
-            class="text-none"
-            variant="outlined" 
-            rounded="xl" 
+            rounded="xl"
             size="large"
             @click="onClickSpotifyButton">
-            {{ mdAndUp ? 'Account' : null}}
-            <template #append>
-                <v-img class="mx-auto"
-                    :src="spotifyUserInfo?.imageUrl!"
+            <template #default>
+                <v-img :src="spotifyUserInfo?.imageUrl!"
                     :width="spotifyUserInfo?.imageWidth!"
                     :height="spotifyUserInfo?.imageHeight!"
                     :max-height="40"
