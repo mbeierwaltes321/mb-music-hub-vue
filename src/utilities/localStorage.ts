@@ -33,4 +33,10 @@ export const setThemeInLocalStorage = (theme: string) => {
     localStorage.setItem("colorTheme", theme);
 }
 
+export async function checkIfUserLoggedIn() {
+    const loggedInCookie = await cookieStore.get("logged_in");
+    
+    return loggedInCookie?.value === "true";
+}
+
 export default setUpLocalStorage;

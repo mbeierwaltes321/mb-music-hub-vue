@@ -1,10 +1,16 @@
 <script setup lang="ts">
-import { VAppBar, VMenu, VAppBarTitle, VBtn, VAppBarNavIcon, VList, VListItem } from "vuetify/components";
+import { VAppBar, VMenu, VAppBarTitle, VBtn, VAppBarNavIcon, VList, VListItem, VImg} from "vuetify/components";
 import { computed, type Ref, ref, watch } from "vue";
 import { useDisplay, useTheme } from "vuetify";
 import { setThemeInLocalStorage } from "@/utilities/localStorage";
+import { useRouter } from "vue-router";
+import { useAppStateStore } from "@/stores/appStateStore";
+import { storeToRefs } from "pinia";
 
 const theme = useTheme();
+const router = useRouter();
+const appStateStore = useAppStateStore();
+const {isUserLoggedIn, spotifyUserInfo} = storeToRefs(appStateStore);
 
 //Determine if the current screen is in the medium breakpoint or higher (960px or greater)
 const { mdAndUp } = useDisplay();
@@ -52,7 +58,10 @@ function toggleTheme() {
  * This function handles the user clicking on the login button for Spotify
  */
 function onClickSpotifyButton() {
-    alert("You clicked on the spotify log in button!");
+    //TODO - Eventually update this to pull the correct URL depending on the environment
+    const loginUrl = import.meta.env.DEV ? "http://127.0.0.1:8080/api/conn/spotifylogin" : "prod_url";
+    const frontEndQuery = `?frontendState=${encodeURIComponent(router.currentRoute.value.fullPath)}`;
+    window.location.href = loginUrl + frontEndQuery;
 }
 
 
@@ -89,12 +98,29 @@ watch(() => mdAndUp.value, () => {
         <v-btn v-if="mdAndUp" 
                :icon="theme.current.value.dark ? 'fas fa-moon' : 'far fa-sun'" 
                @click="toggleTheme"/>
-        <v-btn class="text-none"
-               variant="outlined" 
-               rounded="xl" 
-               append-icon="fab fa-spotify" 
-               size="large"
-               @click="onClickSpotifyButton">
+        <v-btn v-if="isUserLoggedIn"
+            rounded="xl"
+            size="large"
+            :icon="spotifyUserInfo?.imageUrl ? undefined : 'fas fa-circle-user'"
+            @click="onClickSpotifyButton">
+            <template v-if="spotifyUserInfo?.imageUrl"
+                #default>
+                <v-img :src="spotifyUserInfo?.imageUrl!"
+                    :width="spotifyUserInfo?.imageWidth!"
+                    :height="spotifyUserInfo?.imageHeight!"
+                    :max-height="40"
+                    :max-width="40"
+                    rounded="circle"
+                />
+            </template>
+        </v-btn>
+        <v-btn v-else
+            class="text-none"
+            variant="outlined" 
+            rounded="xl" 
+            append-icon="fab fa-spotify" 
+            size="large"
+            @click="onClickSpotifyButton">
             Login
         </v-btn>
     </v-app-bar>

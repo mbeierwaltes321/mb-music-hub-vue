@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { onBeforeMount } from 'vue';
+import { onBeforeMount, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import GlobalDialog from './components/dialog/GlobalDialog.vue';
 
 const router = useRouter();
 
@@ -15,4 +16,5 @@ onBeforeMount(() => {
 
 <template>
     <RouterView></RouterView>
+    <GlobalDialog />
 </template>

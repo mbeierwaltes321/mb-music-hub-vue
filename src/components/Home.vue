@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import { usePlaylistService } from '@/services/hubserver/playlistService';
+import { useDialogStore } from '@/stores/dialogStore';
 import { ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
 import { useTheme } from 'vuetify';
-import { VContainer, VCol, VRow, VCard, VCardText, VHover, VCarousel, VCarouselItem, VSheet, VDivider } from 'vuetify/components';
+import { VContainer, VCol, VRow, VCard, VCardText, VHover, VBtn, VDivider } from 'vuetify/components';
 
 //Set the horizontal line depending on the color theme
+const {confirmDialog, alertDialog} = useDialogStore();
+const router = useRouter();
 const theme = useTheme();
 const horizontalLineColor = ref(theme.global.current.value.dark ? "#8B8B00" : "#00008B");
 
@@ -11,6 +16,7 @@ const horizontalLineColor = ref(theme.global.current.value.dark ? "#8B8B00" : "#
  * This function navigates the user to the youtube mixes component
  */
 function navigateToYoutubeMixes() {
+    console.log(router.currentRoute.value.fullPath);
     alert("You clicked on the youtube mixes button!");
 }
 

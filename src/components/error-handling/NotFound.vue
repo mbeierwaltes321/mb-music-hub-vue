@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
 
+//TODO - Replace this with the empty state component in vuetify
 const route = useRoute();
 
 console.log(route.params);
